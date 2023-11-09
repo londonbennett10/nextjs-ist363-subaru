@@ -27,7 +27,7 @@ const VehiclesPage = ({vehicles}) => {
             })}
         </ul>
     </Layout>
-
+//comment
 }
 
 export default VehiclesPage;
