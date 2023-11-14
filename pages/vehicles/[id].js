@@ -3,7 +3,7 @@ import Layout from '../../components/Layout';
 import { getVehicleBySlug , getAllVehicleSlugs } from "../../lib/api";
 
 
-//1
+//1 LALAl
 
 export async function getStaticPaths(){
     const pathsArr = getAllVehicleSlugs();
