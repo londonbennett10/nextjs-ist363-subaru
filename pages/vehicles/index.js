@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import Container from '../../components/Container';
 import FilterBar from '../../components/FilterBar';
 import Grid from '../../components/Grid';
@@ -51,25 +50,7 @@ const VehiclesPage = ({ vehicles, vehicleTypes }) => {
                 activeItem={activeVehicleType} 
                 setActiveItem={setActiveVehicleType}
             />
-            <Grid>
-                {filteredVehicles.map((vehicle, index) => {
-                    const { title, slug, vehicleInformation } = vehicle.node;
-                    const { trimLevels } = vehicleInformation;
-                    return <article key={index}>
-                        {trimLevels && trimLevels[0].images.thumbnail && 
-                            <Image 
-                                src={trimLevels[0].images.thumbnail.node.sourceUrl}
-                                alt={trimLevels[0].images.thumbnail.node.altText}
-                                width={trimLevels[0].images.thumbnail.node.mediaDetails.width}
-                                height={trimLevels[0].images.thumbnail.node.mediaDetails.height}
-                            />
-                        }
-                        <h3>{title}</h3>
-                        <p>
-                            <Link href={`/vehicles/${slug}`}>Learn more</Link>
-                        </p>
-                    </article>
-                })}
+            <Grid items={filteredVehicles}>       
             </Grid>
         </Container>
     </Layout>
