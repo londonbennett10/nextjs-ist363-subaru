@@ -1,81 +1,95 @@
-import Link from 'next/link';
-import styles from './nav.module.scss';
-import {getDesktopNavItems, getMobileNavItems} from '../lib/nav';
+//core import
+import { motion } from "framer-motion";
+
+//custom components
 import ButtonUI from './ButtonUI';
-import { motion } from "framer-motion"
+import Link from 'next/link';
 
+//styles
+import styles from './nav.module.scss';
 
+//utility functions
+import { getDesktopNavItems, getMobileNavItems } from '../lib/nav';
 
 const Nav = () => {
-    return <nav className={styles.nav}> Nav goes here. </nav>
+    return <nav className={styles.nav}>Nav goes here.</nav>
 }
-
 const Desktop = () => {
     const navItems = getDesktopNavItems();
     return <nav className={styles.nav__desktop}>
         <ul className={styles.nav__list}>
             {navItems.map((navItem, index) => {
-                const {label, slug} = navItem;
+                const { label, slug } = navItem;
                 return <li key={index} className={styles.nav__list__item}>
-                    <Link href={slug}>
+                    {slug ?
+                    <Link href={`/${slug}`}>
                         {label}
                     </Link>
+                    : label
+                     }
                 </li>
             })}
         </ul>
     </nav>
 }
-Nav.Desktop = Desktop;
+//compound components
+Nav.Desktop= Desktop;
 
-
-const Mobile = ({closeHandler}) => {
+const Mobile = ({ closeHandler }) => {
     const navItems = getMobileNavItems();
     const mobileNavVariants = {
-        closed:{
-            left:'-100%'
+        closed: {
+            left: '-100%'
         },
         open: {
-            left:0,
-        
+            left: 0,
         }
     }
     const listVariants = {
-        closed:{
-            opacity:0
+        closed: {
+            opacity: 0
         },
         open: {
             opacity: 1,
-            transition:{
-                staggerChildren: 0.1
+            transition: {
+                staggerChldren: 0.1
             }
-
         }
     }
-
     const itemVariants = {
-        closed: { x: -50, opactity: 0},
-        open: {x:0, opacity:100}
+        closed: {
+            x: -50,
+            opacity: 0
+        },
+        open: {
+            x: 0,
+            opacity: 1
+        }
     }
 
     return <motion.nav 
         className={styles.nav__mobile}
-        initial="closed"
-        animate="open"
-        exit="closed"
-        variants={mobileNavVariants}
-    > 
+        initial= "closed"
+        animate= "open"
+        exit= "closed"
+        variants= {mobileNavVariants}
+    >
         <ButtonUI 
             icon="close"
-            clickHandler={closeHandler}
+            clickHandler={closeHandler} 
         />
         <motion.ul 
-        className={styles.nav__list}
-        variants = {listVariants}
+            className={styles.nav__list}
+            variants={listVariants}
         >
             {navItems.map((navItem, index) => {
-                const {label, slug} = navItem;
-                return <motion.li key={index} className={styles.nav__list__item} variants={itemVariants}>
-                    <Link href={slug}>
+                const { label, slug } = navItem;
+                return <motion.li 
+                    key={index} 
+                    className={styles.nav__list__item}
+                    variants={itemVariants}
+                    >
+                    <Link href={`/${slug}`}>
                         {label}
                     </Link>
                 </motion.li>
@@ -84,4 +98,5 @@ const Mobile = ({closeHandler}) => {
     </motion.nav>
 }
 Nav.Mobile = Mobile;
+
 export default Nav;

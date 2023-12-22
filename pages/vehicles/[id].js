@@ -1,8 +1,16 @@
+import ColorPicker from '../../components/ColorPicker';
+import CallToAction from '../../components/CallToAction';
+import Container from '../../components/Container';
+import Head from 'next/head';
+import Heading from '../../components/Heading';
 import Image from 'next/image';
 import Layout from '../../components/Layout';
-import { getVehicleBySlug , getAllVehicleSlugs } from "../../lib/api";
 import Showcase from '../../components/Showcase';
+import TrimPicker from '../../components/TrimPicker';
 
+
+import { getVehicleBySlug, getAllVehicleSlugs } from '../../lib/api';
+import { getDrivingLocations } from '../../lib/locations';
 
 //1 LALAl
 
@@ -29,10 +37,12 @@ export async function getStaticPaths(){
 
 export async function getStaticProps({ params }) {
     const vehicleData = await getVehicleBySlug(params.id); 
+    const drivingLocations = getDrivingLocations();
 
     return {
         props : {
-            vehicleData
+            vehicleData,
+            drivingLocations
         }
     }
 }
@@ -41,10 +51,14 @@ export async function getStaticProps({ params }) {
 //3
 
 
-const SingleVehiclePage = ({ vehicleData }) => {
+const SingleVehiclePage = ({ vehicleData , drivingLocations }) => {
     const {title, slug, featuredImage, vehicleInformation} = vehicleData;
     const { headline } = vehicleInformation.showcase;
+    const { trimLevels , vehicleColors } = vehicleInformation;
     return <Layout> 
+        <Head> 
+            <title> {title} | Subaru Vehicles </title>
+        </Head>
        <Showcase 
             subtitle={title}
             title={headline}
@@ -52,7 +66,16 @@ const SingleVehiclePage = ({ vehicleData }) => {
        /> 
 
        <div id="main-content">
-            Main Content will go here
+            <Container>
+                <TrimPicker trims={trimLevels} locations={drivingLocations} />
+
+                <ColorPicker 
+                    colors={vehicleColors}
+                />
+
+            </Container>
+
+            <CallToAction vehicleName={title} />
        </div>
         
         

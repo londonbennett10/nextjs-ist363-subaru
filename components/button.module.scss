@@ -9,9 +9,12 @@
     border: 0;
     &.primary{
         background-color: vars.$color__primary;
+        color: white;
     }
 
     &.secondary{
-        background-color: pink;
+        background-color: transparent;
+        color: white;
+        border: 1px solid white;
     }
 }

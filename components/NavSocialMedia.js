@@ -34,7 +34,7 @@ const NavSocialMedia = () => {
                 return <li key={`socialMediaLink${index}`}>
                     <a href={url} target="_blank">
                         <Image 
-                            src={`images/icons/${slug}.svg`}
+                            src={`/images/icons/${slug}.svg`}
                             alt={`${name} icon`}
                             width={32}
                             height={32}

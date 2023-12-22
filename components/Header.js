@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Container from './Container';
 import styles from './header.module.scss';
 import ButtonUI from './ButtonUI';
+import Link from 'next/link';
 import Logo from './Logo';
 import Nav from './Nav';
 import Row from './Row'
@@ -13,7 +14,8 @@ const Header = () => {
          return <header className={styles.header}>
             <Container>
                 <Row justifyContent="space-between">
-                    <Logo />
+                    <Link href="/"> <Logo />
+                    </Link> 
                     <Nav.Desktop />
                     <ButtonUI icon="menu"
                         clickHandler={() => {
