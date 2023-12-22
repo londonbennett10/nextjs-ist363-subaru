@@ -1,3 +1,6 @@
+
+import Heading from './Heading';
+import Paragraph from './Paragraph';
 import styles from './grid.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -43,10 +46,19 @@ const Grid = ({items}) => {
                                 height={trimLevels[0].images.thumbnail.node.mediaDetails.height}
                             />
                         }  
-                        <h3>{title}</h3>
-                        <p>
+                        <Heading 
+                        level={3}
+                        color = "black"
+                         >
+                            {title}
+                        </Heading>
+                        <Paragraph>
+                            Starting at $25,000
+                        </Paragraph>
+                        
+                        <Paragraph>
                             <Link href={`/vehicles/${slug}`}>Learn more</Link>
-                        </p>
+                        </Paragraph>
                     </motion.article>
                 })}
                 
