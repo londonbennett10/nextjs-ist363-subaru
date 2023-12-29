@@ -1,5 +1,10 @@
-.nav_socialmedia {
+.navsocialmedia {
+//displays content as flex box 
     display: flex;
+
+// aligns flex children centered horizontally 
     justify-content: center;
+
+//adds gap 
     gap: 1rem;
 }

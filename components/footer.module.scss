@@ -5,6 +5,7 @@
     color: black;
     text-align: center;
     display: flex;
+    //displays flexboxes as columns rather than rows
     flex-direction: column;
     gap: 1rem;
     min-height: 100%;

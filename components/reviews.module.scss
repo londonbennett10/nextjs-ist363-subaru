@@ -1,0 +1,27 @@
+.reviews{
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+
+}
+
+.review {
+    
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #ccc;
+
+    &:first-child {
+        margin-top: 2rem;
+    }
+    &:last-child {
+        border-bottom: none;
+    }
+
+   
+}
+
+.starrating{
+    justify-content: center;
+}

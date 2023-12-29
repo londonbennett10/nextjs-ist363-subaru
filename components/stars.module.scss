@@ -1,0 +1,12 @@
+.starrating {
+    //displays content as flex box 
+        display: flex;
+    
+    // aligns flex children centered horizontally 
+        justify-content: center;
+    
+    //adds gap 
+        gap: 1rem;
+
+        margin-bottom: 2rem;
+    }

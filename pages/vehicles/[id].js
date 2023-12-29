@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Layout from '../../components/Layout';
 import Showcase from '../../components/Showcase';
 import TrimPicker from '../../components/TrimPicker';
+import Reviews from '../../components/Reviews';
 
 
 import { getVehicleBySlug, getAllVehicleSlugs } from '../../lib/api';
@@ -76,6 +77,8 @@ const SingleVehiclePage = ({ vehicleData , drivingLocations }) => {
             </Container>
 
             <CallToAction vehicleName={title} />
+
+            <Reviews vehicleName={title} />
        </div>
         
         
