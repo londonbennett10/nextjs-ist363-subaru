@@ -2,7 +2,7 @@ import Heading from './Heading';
 import styles from './reviews.module.scss';import Paragraph from './Paragraph';
 import Container from './Container';
 import Stars from './Stars';
-
+import ReviewPicker from './ReviewPicker'
 
 
  //Array of social media reviews
@@ -14,7 +14,8 @@ import Stars from './Stars';
         {   author: 'Jack Murphy', 
             date: '1/1/23', 
             text: 'Amazing quality and service.' },
-        {   author: 'Alex Johnson', 
+        {   
+            author: 'Alex Johnson', 
             date: '1/1/23', 
             text: 'Very satisfied with my purchase.' }
     ];
@@ -26,6 +27,7 @@ const Reviews = () => {
     return (
         <Container>
         <div className={styles.reviews}>
+            <ReviewPicker />
             <Stars />
             <Heading level={3}>Customer Reviews</Heading>
             <br></br>

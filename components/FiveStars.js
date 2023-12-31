@@ -9,8 +9,8 @@ const Stars = () => {
                     <Image 
                         src={`/images/icons/star.svg`}
                         alt={`star icon`}
-                        width={32}
-                        height={32}
+                        width={20}
+                        height={20}
                     />
                 
             </li>
@@ -20,8 +20,8 @@ const Stars = () => {
                     <Image 
                         src={`/images/icons/star.svg`}
                         alt={`star icon`}
-                        width={32}
-                        height={32}
+                        width={20}
+                        height={20}
                     />
                 
             </li>
@@ -31,8 +31,8 @@ const Stars = () => {
                     <Image 
                         src={`/images/icons/star.svg`}
                         alt={`star icon`}
-                        width={32}
-                        height={32}
+                        width={20}
+                        height={20}
                     />
                 
             </li>
@@ -42,8 +42,8 @@ const Stars = () => {
                     <Image 
                         src={`/images/icons/star.svg`}
                         alt={`star icon`}
-                        width={32}
-                        height={32}
+                        width={20}
+                        height={20}
                     />
                 
             </li>
@@ -54,8 +54,8 @@ const Stars = () => {
                     <Image 
                         src={`/images/icons/star.svg`}
                         alt={`star icon`}
-                        width={32}
-                        height={32}
+                        width={20}
+                        height={20}
                     />
                 
             </li>

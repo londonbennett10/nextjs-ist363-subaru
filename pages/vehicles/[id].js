@@ -7,11 +7,13 @@ import Image from 'next/image';
 import Layout from '../../components/Layout';
 import Showcase from '../../components/Showcase';
 import TrimPicker from '../../components/TrimPicker';
-import Reviews from '../../components/Reviews';
+import ReviewPicker from '../../components/ReviewPicker';
 
 
 import { getVehicleBySlug, getAllVehicleSlugs } from '../../lib/api';
 import { getDrivingLocations } from '../../lib/locations';
+
+import { getReviews } from '../../lib/ratings';
 
 //1 LALAl
 
@@ -39,11 +41,13 @@ export async function getStaticPaths(){
 export async function getStaticProps({ params }) {
     const vehicleData = await getVehicleBySlug(params.id); 
     const drivingLocations = getDrivingLocations();
+    const reviews = getReviews();
 
     return {
         props : {
             vehicleData,
-            drivingLocations
+            drivingLocations,
+            reviews
         }
     }
 }
@@ -52,7 +56,11 @@ export async function getStaticProps({ params }) {
 //3
 
 
-const SingleVehiclePage = ({ vehicleData , drivingLocations }) => {
+
+
+const SingleVehiclePage = ({ vehicleData , drivingLocations, reviews }) => {
+    
+
     const {title, slug, featuredImage, vehicleInformation} = vehicleData;
     const { headline } = vehicleInformation.showcase;
     const { trimLevels , vehicleColors } = vehicleInformation;
@@ -74,11 +82,17 @@ const SingleVehiclePage = ({ vehicleData , drivingLocations }) => {
                     colors={vehicleColors}
                 />
 
+
+
             </Container>
 
-            <CallToAction vehicleName={title} />
+            <ReviewPicker reviews={reviews}/>
 
-            <Reviews vehicleName={title} />
+                <CallToAction vehicleName={title} />
+
+            
+
+            
        </div>
         
         
